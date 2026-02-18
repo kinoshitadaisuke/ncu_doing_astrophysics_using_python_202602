@@ -1,7 +1,7 @@
-#!/usr/pkg/bin/python3.13
+#!/usr/bin/env python3
 
 #
-# Time-stamp: <2025/09/02 20:39:01 (UT+08:00) daisuke>
+# Time-stamp: <2026/02/18 12:49:31 (UT+08:00) daisuke>
 #
 
 # printing a sentence
