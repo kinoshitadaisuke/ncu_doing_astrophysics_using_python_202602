@@ -19,3 +19,18 @@ This is a repository for the course "Doing Astrophysics using Python" offered at
     - mobile phone
   - Course web page: https://s3b.astro.ncu.edu.tw/appy_202602/
 
+## Online resources
+
+Here is a list of online resources for this course.
+
+- course web page: https://s3b.astro.ncu.edu.tw/appy_202602/
+  - The lecture notes can be downloaded from above web page.
+- GitHub repository: https://github.com/kinoshitadaisuke/ncu_doing_astrophysics_using_python_202602
+  - A set of sample Python scripts for this course can be downloade from above web page.
+
+To download a set of sample Python scripts for this course, try following command.
+
+```shell
+git clone https://github.com/kinoshitadaisuke/ncu_doing_astrophysics_using_python_202602.git
+```
+
