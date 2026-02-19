@@ -59,6 +59,4 @@ git clone https://github.com/kinoshitadaisuke/ncu_doing_astrophysics_using_pytho
 ## Jupyter Notebook files
 
 - Session 00
-  -
-- Session 01
-  -
+  - https://colab.research.google.com/drive/1T9hDy_ybM141X40tJXeWXD0F59K6UeG5?usp=sharing
