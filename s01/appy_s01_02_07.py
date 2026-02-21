@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/02/21 11:18:13 (UT+08:00) daisuke>
+# Time-stamp: <2026/02/21 11:18:05 (UT+08:00) daisuke>
 #
 
 # importing math module
@@ -11,10 +11,7 @@ import math
 a_deg = 0.0
 
 # calculating sin (0 deg), sin (15 deg), sin (30 deg), ..., sin (180 deg)
-while (True):
-    # stop "while" loop if "a_deg" is greater than 180.0 deg
-    if (a_deg > 180.0):
-        break
+while (a_deg <= 180.0):
     # converting from degree into radian
     a_rad = math.radians (a_deg)
     # calculation of sine
