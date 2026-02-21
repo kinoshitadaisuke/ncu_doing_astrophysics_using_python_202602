@@ -1,7 +1,7 @@
-#!/usr/pkg/bin/python3.13
+#!/usr/bin/env python3
 
 #
-# Time-stamp: <2025/09/02 21:14:03 (UT+08:00) daisuke>
+# Time-stamp: <2026/02/21 11:13:02 (UT+08:00) daisuke>
 #
 
 # assignment of values to variables
