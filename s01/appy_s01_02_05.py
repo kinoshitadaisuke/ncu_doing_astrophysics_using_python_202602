@@ -1,7 +1,7 @@
-#!/usr/pkg/bin/python3.13
+#!/usr/bin/env python3
 
 #
-# Time-stamp: <2025/09/02 21:16:12 (UT+08:00) daisuke>
+# Time-stamp: <2026/02/21 11:17:57 (UT+08:00) daisuke>
 #
 
 # initialisation of a variable "total"
