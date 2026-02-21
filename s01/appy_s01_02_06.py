@@ -1,22 +1,16 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/02/21 11:18:05 (UT+08:00) daisuke>
+# Time-stamp: <2026/02/21 12:35:01 (UT+08:00) daisuke>
 #
 
-# importing math module
-import math
+# initialisation of a variable "total"
+total = 0
 
-# initialisation of a variable "a"
-a_deg = 0.0
+# calculating 1 + 2 + 3 + ... + 10 using "for" statement
+for i in range (1, 11):
+    # adding "i" to "total"
+    total += i
 
-# calculating sin (0 deg), sin (15 deg), sin (30 deg), ..., sin (180 deg)
-while (a_deg <= 180.0):
-    # converting from degree into radian
-    a_rad = math.radians (a_deg)
-    # calculation of sine
-    sin_a = math.sin (a_rad)
-    # printing result of calculation
-    print (f'sin ({a_deg:5.1f} deg) = {sin_a:8.6f}')
-    # incrementing variable "a"
-    a_deg += 15.0
+# printing result of calculation
+print (f'1 + 2 + 3 + ... + 8 + 9 + 10 = {total}')
