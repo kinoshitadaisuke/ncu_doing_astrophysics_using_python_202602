@@ -1,0 +1,15 @@
+#!/usr/pkg/bin/python3.13
+
+#
+# Time-stamp: <2025/09/02 21:17:37 (UT+08:00) daisuke>
+#
+
+# two numbers
+a = 3
+b = 0
+
+# calculation
+c = a / b
+
+# printing result of calculation
+print (f'{a} / {b} = {c}')
