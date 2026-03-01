@@ -1,7 +1,7 @@
-#!/usr/pkg/bin/python3.13
+#!/usr/bin/env python3
 
 #
-# Time-stamp: <2025/09/08 12:58:37 (UT+08:00) daisuke>
+# Time-stamp: <2026/02/28 16:04:12 (UT+08:00) daisuke>
 #
 
 # importing multiprocessing module
