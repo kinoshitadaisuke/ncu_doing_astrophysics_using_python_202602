@@ -1,7 +1,7 @@
-#!/usr/pkg/bin/python3.13
+#!/usr/bin/env python3
 
 #
-# Time-stamp: <2025/09/08 12:42:48 (UT+08:00) daisuke>
+# Time-stamp: <2026/02/28 15:59:10 (UT+08:00) daisuke>
 #
 
 # importing os module
