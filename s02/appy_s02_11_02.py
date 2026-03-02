@@ -1,28 +1,27 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/02/28 16:10:22 (UT+08:00) daisuke>
+# Time-stamp: <2026/03/01 18:35:14 (UT+08:00) daisuke>
 #
 
-# importing random module
-import random
+# importing gzip module
+import gzip
 
-# initialisation of random number generator
-random.seed ()
+# compressed data file
+file_numbers = 'numbers.data.gz'
 
-#
-# generating 10 random numbers of Gaussian dist. of mean=100 and stddev=10
-#
+# output data file
+file_output = 'numbers.data'
 
-# parameters
-mean   = 100.0
-stddev = 10.0
+# opening compressed file for reading
+with gzip.open (file_numbers, 'rb') as fh_in:
+    # reading file
+    data_byte = fh_in.read ()
 
-# generating 10 random numbers
-print (f'10 random numbers of Gaussian distribution', \
-       f'of mean={mean} and stddev={stddev}')
-for i in range (10):
-    # generation of a random number of Gaussian distribution
-    r = random.gauss (mean, stddev)
-    # printing generated random number
-    print (f'  {r:15.11f}')
+# decoding raw byte data into UTF-8 text
+data_utf8 = data_byte.decode ('utf-8')
+
+# opening file for writing
+with open (file_output, 'w') as fh_out:
+    # writing data into file
+    fh_out.write (data_utf8)
