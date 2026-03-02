@@ -1,38 +1,36 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/02/28 16:12:27 (UT+08:00) daisuke>
+# Time-stamp: <2026/02/28 16:07:05 (UT+08:00) daisuke>
 #
 
-# importing pint module
-import pint
+# importing math module
+import math
 
-# units
-ur       = pint.UnitRegistry ()
-u_deg    = ur.degree
-u_rad    = ur.radian
-u_arcmin = ur.arcmin
-u_arcsec = ur.arcsec
-u_mas    = ur.mas
+#
+# some constants
+#
 
-# angle a in deg
-a_deg = 180.0 * u_deg
+# pi
+pi = math.pi
+print (f'pi   = {pi}')
 
-# converting from deg to rad
-a_rad = a_deg.to (u_rad)
+# tau
+tau = math.tau
+print (f'tau  = 2.0 * pi\n     = {tau}')
 
-# printing result
-print (f'a = {a_deg}')
-print (f'  = {a_rad}')
+# e
+e = math.e
+print (f'e    = {e}')
 
-# angle b
-b_deg    = 1.0 * u_deg
-b_arcmin = b_deg.to (u_arcmin)
-b_arcsec = b_deg.to (u_arcsec)
-b_mas    = b_deg.to (u_mas)
+# positive infinity
+pinf = math.inf
+print (f'+inf = {pinf}')
 
-# printing results
-print (f'b = {b_deg}')
-print (f'  = {b_arcmin}')
-print (f'  = {b_arcsec}')
-print (f'  = {b_mas}')
+# negative infinity
+ninf = -math.inf
+print (f'-inf = {ninf}')
+
+# NaN (not a number)
+nan = math.nan
+print (f'NaN  = {nan}')
