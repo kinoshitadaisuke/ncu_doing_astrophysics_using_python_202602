@@ -1,27 +1,22 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/02/28 16:10:11 (UT+08:00) daisuke>
+# Time-stamp: <2026/03/01 17:47:24 (UT+08:00) daisuke>
 #
 
-# importing random module
-import random
+# importing gzip module
+import gzip
 
-# initialisation of random number generator
-random.seed ()
+# compressed data file
+file_numbers = 'numbers.data.gz'
 
-#
-# generating 10 random numbers of uniform distribution between 100 and 200
-#
+# opening compressed file for reading
+with gzip.open (file_numbers, 'rb') as fh_in:
+    # reading file
+    data_byte = fh_in.read ()
 
-# parameters
-a = 100.0
-b = 200.0
+# decoding raw byte data into UTF-8 text
+data_utf8 = data_byte.decode ('utf-8')
 
-# generating 10 random numbers
-print (f'10 random numbers of uniform distribution between {a} and {b}')
-for i in range (10):
-    # generation of a random number of uniform distribution between 100 and 200
-    r = random.uniform (a, b)
-    # printing generated random number
-    print (f'  {r:15.11f}')
+# printing data
+print (data_utf8)
