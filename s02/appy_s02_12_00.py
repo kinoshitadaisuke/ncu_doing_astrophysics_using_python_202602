@@ -1,58 +1,30 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/02/28 16:10:35 (UT+08:00) daisuke>
+# Time-stamp: <2026/03/02 21:52:49 (UT+08:00) daisuke>
 #
 
-# importing statistics module
-import statistics
+# importing urllib module
+import urllib.request
 
-# generation of a synthetic data set
-dataset1 = [ 6.0, 7.0, 8.0, 9.0, 9.0, \
-             10.0, 10.0, 11.0, 11.0, 11.0, \
-             12.0, 13.0, 14.0]
+# importing ssl module
+import ssl
 
-# printing data set
-print (f'dataset1:\n{dataset1}')
+# allow insecure downloading
+ssl._create_default_https_context = ssl._create_unverified_context
 
-# calculation of mean
-mean = statistics.fmean (dataset1)
+# URL of data file
+url_tarfile = 'https://s3b.astro.ncu.edu.tw/appy_202602/data/files.tar'
 
-# printing calculated mean
-print (f'mean of dataset1                          = {mean:6.3f}')
+# output data file
+file_tarfile = 'files.tar'
 
-# calculation of median
-median = statistics.median (dataset1)
+# opening URL
+with urllib.request.urlopen (url_tarfile) as fh_in:
+    # reading data
+    data_tarfile = fh_in.read ()
 
-# printing calculated median
-print (f'median of dataset1                        = {median:6.3f}')
-
-# calculation of mode
-mode = statistics.mode (dataset1)
-
-# printing calculated mode
-print (f'mode of dataset1                          = {mode:6.3f}')
-
-# calculation of sample variance
-var = statistics.variance (dataset1)
-
-# printing calculated sample variance
-print (f'sample variance of dataset1               = {var:6.3f}')
-
-# calculation of population variance
-pvar = statistics.pvariance (dataset1)
-
-# printing calculated population variance
-print (f'population variance of dataset1           = {pvar:6.3f}')
-
-# calculation of sample standard deviation
-stddev = statistics.stdev (dataset1)
-
-# printing calculated sample variance
-print (f'sample standard deviation of dataset1     = {stddev:6.3f}')
-
-# calculation of population standard deviation
-pstddev = statistics.pstdev (dataset1)
-
-# printing calculated population standard deviation
-print (f'population standard deviation of dataset1 = {pstddev:6.3f}')
+# opening file for writing
+with open (file_tarfile, 'wb') as fh_out:
+    # writing data into file
+    fh_out.write (data_tarfile)
