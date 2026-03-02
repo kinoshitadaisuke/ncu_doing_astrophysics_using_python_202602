@@ -1,36 +1,30 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/02/28 16:07:05 (UT+08:00) daisuke>
+# Time-stamp: <2026/03/01 11:02:37 (UT+08:00) daisuke>
 #
 
-# importing math module
-import math
+# importing urllib module
+import urllib.request
 
-#
-# some constants
-#
+# importing ssl module
+import ssl
 
-# pi
-pi = math.pi
-print (f'pi   = {pi}')
+# allow insecure downloading
+ssl._create_default_https_context = ssl._create_unverified_context
 
-# tau
-tau = math.tau
-print (f'tau  = 2.0 * pi\n     = {tau}')
+# URL of data file
+url_stars = 'https://s3b.astro.ncu.edu.tw/appy_202602/data/stars.json'
 
-# e
-e = math.e
-print (f'e    = {e}')
+# output data file
+file_stars = 'stars.json'
 
-# positive infinity
-pinf = math.inf
-print (f'+inf = {pinf}')
+# opening URL
+with urllib.request.urlopen (url_stars) as fh_in:
+    # reading data
+    data_stars = fh_in.read ()
 
-# negative infinity
-ninf = -math.inf
-print (f'-inf = {ninf}')
-
-# NaN (not a number)
-nan = math.nan
-print (f'NaN  = {nan}')
+# opening file for writing
+with open (file_stars, 'w') as fh_out:
+    # writing data into file
+    fh_out.write (data_stars.decode ('utf-8'))
