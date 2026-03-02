@@ -1,0 +1,22 @@
+#!/usr/bin/env python3
+
+#
+# Time-stamp: <2026/02/28 16:08:08 (UT+08:00) daisuke>
+#
+
+# importing math module
+import math
+
+# two integers "c" and "d"
+c = 30
+d = 45
+
+# lcm
+lcm_c_d = math.lcm (c, d)
+
+# printing results
+print (f'Use of lcm () function:')
+print (f'  c                                = {c}')
+print (f'  d                                = {d}')
+print (f'  least common multiple of c and d = {lcm_c_d}')
+print (f'')
