@@ -1,23 +1,30 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/02/28 16:09:58 (UT+08:00) daisuke>
+# Time-stamp: <2026/03/01 17:36:13 (UT+08:00) daisuke>
 #
 
-# importing random module
-import random
+# importing urllib module
+import urllib.request
 
-# initialisation of random number generator
-random.seed ()
+# importing ssl module
+import ssl
 
-#
-# generating 10 random numbers of uniform distribution between 0 and 1
-#
+# allow insecure downloading
+ssl._create_default_https_context = ssl._create_unverified_context
 
-# generating 10 random numbers
-print (f'10 random numbers of uniform distribution between 0 and 1')
-for i in range (10):
-    # generation of a random number of uniform distribution between 0 and 1
-    r = random.random ()
-    # printing generated random number
-    print (f'  {r:15.13f}')
+# URL of data file
+url_numbers = 'https://s3b.astro.ncu.edu.tw/appy_202602/data/numbers.data.gz'
+
+# output data file
+file_numbers = 'numbers.data.gz'
+
+# opening URL
+with urllib.request.urlopen (url_numbers) as fh_in:
+    # reading data
+    data_numbers = fh_in.read ()
+
+# opening file for writing
+with open (file_numbers, 'wb') as fh_out:
+    # writing data into file
+    fh_out.write (data_numbers)
