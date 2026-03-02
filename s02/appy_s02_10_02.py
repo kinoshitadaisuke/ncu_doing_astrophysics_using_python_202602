@@ -1,26 +1,49 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/02/28 16:07:20 (UT+08:00) daisuke>
+# Time-stamp: <2026/03/01 11:15:30 (UT+08:00) daisuke>
 #
 
-# importing math module
-import math
+# importing json module
+import json
 
-# two floats "a" and "b"
-a = 12.34
-b = -56.78
+# json file
+file_json = 'stars.json'
 
-# ceil
-a_ceil = math.ceil (a)
-b_ceil = math.ceil (b)
+# new json file
+file_json2 = 'stars2.json'
 
-# printing results
-print (f'Use of ceil () function:')
-print (f'  a         = {a}')
-print (f'  ceil (a)  = {a_ceil}')
-print (f'  {a_ceil} is the smallest integer greater than or equal to {a}.')
-print (f'  b         = {b}')
-print (f'  ceil (b)  = {b_ceil}')
-print (f'  {b_ceil} is the smallest integer greater than or equal to {b}.')
-print (f'')
+# opening file for reading
+with open (file_json, 'r') as fh:
+    # reading json file
+    dic_data = json.load (fh)
+
+# adding constellation information to data
+for key1 in sorted (dic_data.keys ()):
+    if (key1 == 'Sirius'):
+        dic_data[key1]["constellation"] = "CMa"
+    elif (key1 == 'Canopus'):
+        dic_data[key1]["constellation"] = "Car"
+    elif (key1 == 'Rigil Kentaurus'):
+        dic_data[key1]["constellation"] = "Cen"
+    elif (key1 == 'Arcturus'):
+        dic_data[key1]["constellation"] = "Boo"
+    elif (key1 == 'Vega'):
+        dic_data[key1]["constellation"] = "Lyr"
+    elif (key1 == 'Capella'):
+        dic_data[key1]["constellation"] = "Aur"
+    elif (key1 == 'Rigel'):
+        dic_data[key1]["constellation"] = "Ori"
+    elif (key1 == 'Procyon'):
+        dic_data[key1]["constellation"] = "CMi"
+
+# printing data
+for key1 in sorted (dic_data.keys ()):
+    print (f'{key1}')
+    for key2 in sorted (dic_data[key1].keys ()):
+        print (f'  {key2} : {dic_data[key1][key2]}')
+
+# opening file for writing
+with open (file_json2, 'w') as fh:
+    # writing json file
+    json.dump (dic_data, fh, indent=4)
