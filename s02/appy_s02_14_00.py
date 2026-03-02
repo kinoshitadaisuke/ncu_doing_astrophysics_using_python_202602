@@ -1,22 +1,42 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/02/28 16:11:53 (UT+08:00) daisuke>
+# Time-stamp: <2026/02/28 16:05:59 (UT+08:00) daisuke>
 #
 
-# importing uncertainties module
-import uncertainties
+# importing urllib module
+import urllib.request
 
-# quantity "a": 6.0 +/- 0.3
-a = uncertainties.ufloat (6.0, 0.3)
+# importing ssl module
+import ssl
 
-# quantity "b": 9.0 +/- 0.4
-b = uncertainties.ufloat (9.0, 0.4)
+# allow insecure downloading
+ssl._create_default_https_context = ssl._create_unverified_context
 
-# calculation of a + b
-c = a + b
+# URL of Yale Bright Star Catalogue
+url_bsc = 'https://cdsarc.cds.unistra.fr/ftp/V/50/catalog.gz'
 
-# printing value of "c"
-print (f'a = {a}')
-print (f'b = {b}')
-print (f'c = a + b = {a} + {b} = {c}')
+# output file name
+file_bsc = 'catalog.gz'
+
+# printing status
+print (f'Now, opening {url_bsc}...')
+
+# opening URL
+with urllib.request.urlopen (url_bsc) as fh_read:
+    # reading data
+    data_byte = fh_read.read ()
+
+# printing status
+print (f'Retrieved data from {url_bsc}!')
+    
+# printing status
+print (f'Now, writing data to file "{file_bsc}"...')
+
+# opening file for writing
+with open (file_bsc, 'wb') as fh_write:
+    # writing data
+    fh_write.write (data_byte)
+
+# printing status
+print (f'Finished writing data to file "{file_bsc}"!')
