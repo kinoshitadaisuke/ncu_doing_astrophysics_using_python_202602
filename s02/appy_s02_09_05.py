@@ -1,51 +1,51 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/02/28 16:06:42 (UT+08:00) daisuke>
+# Time-stamp: <2026/02/28 21:20:05 (UT+08:00) daisuke>
 #
 
-# importing re module
-import re
+# importing csv module
+import csv
 
-# making a pattern for regular expression
-pattern_type = re.compile (r'M[.\d+][I][a-z*]')
+# data file
+file_data = 'planets_solsys.data'
 
-# catalogue file of BSC
-file_bsc = 'bsc.data'
+# output csv file
+file_csv = 'planets_solsys.csv'
+
+# making an empty list for storing data
+list_planets = []
 
 # opening file for reading
-with open (file_bsc, 'r') as fh:
+with open (file_data, 'r') as fh:
     # reading file line-by-line
     for line in fh:
-        # pattern matching using regular expression
-        match_type = re.search (pattern_type, line)
-        # if matched, print the information of the star
-        if (match_type):
-            # HR number
-            HR    = line[0:4].strip ()
-            # name
-            name  = line[4:14].strip ()
-            # RAh
-            RAh   = line[75:77].strip ()
-            # RAm
-            RAm   = line[77:79].strip ()
-            # RAs
-            RAs   = line[79:83].strip ()
-            # Decpm
-            Decpm = line[83].strip ()
-            # Decd
-            Decd  = line[84:86].strip ()
-            # Decm
-            Decm  = line[86:88].strip ()
-            # Decs
-            Decs  = line[88:90].strip ()
-            # Vmag
-            Vmag  = line[102:107].strip ()
-            # SpType
-            SpType = line[127:147].strip ()
-            # RA
-            RA = f'{RAh}:{RAm}:{RAs}'
-            # Dec
-            Dec = f'{Decpm}{Decd}:{Decm}:{Decs}'
-            # printing information about star
-            print (f'{HR:4} {name:10} {RA:10} {Dec:9} {Vmag:5} {SpType}')
+        # if the line starts with '#'
+        if (line[0] == '#'):
+            # then, skip
+            continue
+        # splitting the line into three fields
+        (name, mass_str, diameter_str) = line.split ()
+        # converting string into float
+        try:
+            mass = float (mass_str)
+        except:
+            continue
+        try:
+            diameter = float (diameter_str)
+        except:
+            continue
+        # printing data
+        print (f'{name}')
+        print (f'  mass [kg]    : {mass:g}')
+        print (f'  diameter [m] : {diameter:g}')
+        # storing data in a list
+        list_planets.append ([name, mass, diameter])
+
+# opening file for writing
+with open (file_csv, 'w') as fh:
+    # CSV writer
+    csvwriter = csv.writer (fh, dialect='unix')
+    # writing data
+    for i in range (len (list_planets)):
+        csvwriter.writerow (list_planets[i])
