@@ -1,20 +1,50 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/02/28 16:13:26 (UT+08:00) daisuke>
+# Time-stamp: <2026/02/28 16:10:53 (UT+08:00) daisuke>
 #
 
-# importing sympy module
-import sympy
+# importing statistics module
+import statistics
 
-# variable x
-x = sympy.symbols ('x')
+# importing random module
+import random
 
-# function f
-f = (1 + 1/x)**x
+# number of data in dataset2
+ndata = 1000
 
-# limit x --> infinity
-lim_f = sympy.limit (f, x, sympy.oo)
+# making an empty list for a synthetic dataset
+dataset3 = []
 
-# printing result
-print (f'lim x->infty [{f}] = {lim_f}')
+# distribution parameters
+mean   = 100.0
+stddev = 10.0
+
+# generation of a synthetic dataset using random number generator
+for i in range (ndata):
+    # generating a random number
+    r = random.gauss (mean, stddev)
+    # appending generated random number to list
+    dataset3.append (r)
+
+# printing generated dataset
+print (f'dataset3:')
+for i in range (ndata):
+    if ( (i > 4) and (i < ndata - 1) ):
+        continue
+    elif (i == ndata - 1):
+        print (f'  ...')
+    print (f'  {dataset3[i]}')
+
+# number of data in dataset3
+print (f'number of data in dataset3 = {len (dataset3)}')
+        
+# calculation of mean, median, and standard deviation
+mean   = statistics.fmean (dataset3)
+median = statistics.median (dataset3)
+stddev = statistics.stdev (dataset3)
+
+# printing mean, median, and standard deviation
+print (f'mean of dataset3           = {mean:7.3f}')
+print (f'median of dataset3         = {median:7.3f}')
+print (f'stddev of dataset3         = {stddev:7.3f}')
