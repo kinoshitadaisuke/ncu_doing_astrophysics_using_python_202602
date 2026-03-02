@@ -1,22 +1,22 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/02/28 16:12:03 (UT+08:00) daisuke>
+# Time-stamp: <2026/02/28 16:06:06 (UT+08:00) daisuke>
 #
 
-# importing uncertainties module
-import uncertainties
+# importing pathlib module
+import pathlib
 
-# quantity "a": 8.0 +/- 0.8
-a = uncertainties.ufloat (8.0, 0.8)
+# file of Yale Bright Star Catalogue
+file_bsc = 'catalog.gz'
 
-# quantity "b": 4.0 +/- 0.6
-b = uncertainties.ufloat (4.0, 0.6)
+# making pathlib object
+path_bsc = pathlib.Path (file_bsc)
 
-# calculation of a / b
-c = a / b
-
-# printing value of "c"
-print (f'a = {a}')
-print (f'b = {b}')
-print (f'c = a / b = {a} / {b} = {c}')
+# existence check of file
+if (path_bsc.exists ()):
+    print (f'File "{file_bsc}" exists.')
+    print (f'Downloading of Yale Bright Star Catalogue was successfully done!')
+else:
+    print (f'File "{file_bsc}" DOES NOT exist.')
+    print (f'Download Yale Bright Star Catalogue!')
