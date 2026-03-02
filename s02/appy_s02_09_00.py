@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/02/28 16:05:59 (UT+08:00) daisuke>
+# Time-stamp: <2026/02/28 21:17:51 (UT+08:00) daisuke>
 #
 
 # importing urllib module
@@ -13,30 +13,18 @@ import ssl
 # allow insecure downloading
 ssl._create_default_https_context = ssl._create_unverified_context
 
-# URL of Yale Bright Star Catalogue
-url_bsc = 'https://cdsarc.cds.unistra.fr/ftp/V/50/catalog.gz'
+# URL of data file
+url_stars = 'https://s3b.astro.ncu.edu.tw/appy_202602/data/stars.csv'
 
-# output file name
-file_bsc = 'catalog.gz'
-
-# printing status
-print (f'Now, opening {url_bsc}...')
+# output data file
+file_stars = 'stars.csv'
 
 # opening URL
-with urllib.request.urlopen (url_bsc) as fh_read:
+with urllib.request.urlopen (url_stars) as fh_in:
     # reading data
-    data_byte = fh_read.read ()
-
-# printing status
-print (f'Retrieved data from {url_bsc}!')
-    
-# printing status
-print (f'Now, writing data to file "{file_bsc}"...')
+    data_stars = fh_in.read ()
 
 # opening file for writing
-with open (file_bsc, 'wb') as fh_write:
-    # writing data
-    fh_write.write (data_byte)
-
-# printing status
-print (f'Finished writing data to file "{file_bsc}"!')
+with open (file_stars, 'w') as fh_out:
+    # writing data into file
+    fh_out.write (data_stars.decode ('utf-8'))
