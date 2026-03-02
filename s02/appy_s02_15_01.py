@@ -1,27 +1,26 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/02/28 16:12:35 (UT+08:00) daisuke>
+# Time-stamp: <2026/02/28 16:07:13 (UT+08:00) daisuke>
 #
 
-# importing pint module
-import pint
+# importing math module
+import math
 
-# units
-ur       = pint.UnitRegistry ()
-u_arcsec = ur.arcsec
-u_mas    = ur.mas
-u_pc     = ur.pc
-u_au     = ur.au
-u_m      = ur.metre
+# two floats "a" and "b"
+a = 12.34
+b = -56.78
 
-# parallax of Sirius
-parallax = 374.5 * u_mas
-
-# distance to Sirius
-distance = 1.0 / parallax.to (u_arcsec) * u_pc * u_arcsec
+# floor
+a_floor = math.floor (a)
+b_floor = math.floor (b)
 
 # printing results
-print (f'distance to Sirius = {distance}')
-print (f'                   = {distance.to (u_au)}')
-print (f'                   = {distance.to (u_m)}')
+print (f'Use of floor () function:')
+print (f'  a         = {a}')
+print (f'  floor (a) = {a_floor}')
+print (f'  {a_floor} is the largest integer less than or equal to {a}.')
+print (f'  b         = {b}')
+print (f'  floor (b) = {b_floor}')
+print (f'  {b_floor} is the largest integer less than or equal to {b}.')
+print (f'')
