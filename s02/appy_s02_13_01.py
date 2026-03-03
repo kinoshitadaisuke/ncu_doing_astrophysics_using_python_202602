@@ -1,31 +1,21 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/02/28 16:11:19 (UT+08:00) daisuke>
+# Time-stamp: <2026/03/03 10:07:13 (UT+08:00) daisuke>
 #
 
-# importing decimal module
-import decimal
+# importing zipfile module
+import zipfile
 
-# two numbers "a" and "b" using decimal module
-a = decimal.Decimal ('1.2')
-b = decimal.Decimal ('2.4')
+# zip file
+file_zip = 'files2.zip'
 
-# calculation of c = a + b
-c = a + b
+# opening file for reading
+with zipfile.ZipFile (file_zip, 'r') as fh:
+    # list of files in zip file
+    list_files = fh.namelist ()
 
-# printing result of calculation
-print (f'{a} + {b}             = {c}')
-
-# the other calculations
-d = decimal.Decimal ('1.1')
-e = decimal.Decimal ('1.1')
-f = decimal.Decimal ('1.1')
-g = d + e
-h = d + e + f
-i = d + e + f - decimal.Decimal ('3.3')
-
-# printing results of calculations
-print (f'{d} + {e}             = {g}')
-print (f'{d} + {e} + {f}       = {h}')
-print (f'{d} + {e} + {f} - 3.3 = {i}')
+# printing list of files in zip file
+for filename in list_files:
+    # printing file name
+    print (f'{filename}')
