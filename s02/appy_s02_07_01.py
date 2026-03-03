@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/02/28 16:04:12 (UT+08:00) daisuke>
+# Time-stamp: <2026/03/03 11:32:11 (UT+08:00) daisuke>
 #
 
 # importing multiprocessing module
@@ -35,16 +35,18 @@ def is_prime_number (x):
 # numbers to be checked
 numbers = range (n_start, n_end + 1)
 
-# making a pool of workers
-pool = multiprocessing.Pool (n_cpu)
+# executing the function
+if __name__ == '__main__':
+    # making a pool of workers
+    pool = multiprocessing.Pool (n_cpu)
 
-# executing function for different numbers in parallel
-results = pool.map (is_prime_number, numbers)
+    # executing function for different numbers in parallel
+    results = pool.map (is_prime_number, numbers)
 
-# opening file for writing
-with open (file_output, 'w') as fh_out:
-    # for each number in the list "list_pn"
-    for x, pn in results:
-        # writing number to the file
-        if (pn):
-            fh_out.write (f'{x}\n')
+    # opening file for writing
+    with open (file_output, 'w') as fh_out:
+        # for each number in the list "list_pn"
+        for x, pn in results:
+            # writing number to the file
+            if (pn):
+                fh_out.write (f'{x}\n')
