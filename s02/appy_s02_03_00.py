@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/02/28 16:01:33 (UT+08:00) daisuke>
+# Time-stamp: <2026/03/03 11:07:55 (UT+08:00) daisuke>
 #
 
 # importing urllib module
@@ -14,7 +14,7 @@ import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
 # URL of a resource
-url_pi3 = 'https://newton.ex.ac.uk/research/qsystems/collabs/pi/pi3.txt'
+url_pi3 = 'https://www.exeter.ac.uk/v8media/facultysites/ese/physics/pi3.txt'
 
 # output file name
 file_output = 'pi_1000.txt'
