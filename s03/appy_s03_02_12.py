@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/03/04 16:19:46 (UT+08:00) daisuke>
+# Time-stamp: <2026/03/04 16:19:23 (UT+08:00) daisuke>
 #
 
 # importing numpy module
 import numpy
 
 # making a Numpy array (ndarray) of a specified data type
-# float32 : 32-bit floating point number
+# numpy.dtype ('f4') : 32-bit floating point number
 array_h = numpy.array ([-9.8, -7.6, -5.4, -3.2, -1.0, \
                         1.2, 3.4, 5.6, 7.8, 9.0], \
-                       dtype='float32')
+                       dtype=numpy.dtype ('f4') )
 
 # printing Numpy array
 print (f'array_h:\n{array_h}')
