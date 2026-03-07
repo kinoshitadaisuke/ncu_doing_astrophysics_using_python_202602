@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/03/04 16:19:02 (UT+08:00) daisuke>
+# Time-stamp: <2026/03/04 16:18:55 (UT+08:00) daisuke>
 #
 
 # importing numpy module
 import numpy
 
 # making a Numpy array (ndarray) of a specified data type
-# numpy.dtype ('uint16') : 16-bit unsigned integer
+# numpy.dtype ('u2') : 16-bit unsigned integer
 array_g = numpy.array ([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], \
-                       dtype=numpy.dtype ('uint16') )
+                       dtype=numpy.dtype ('u2') )
 
 # printing Numpy array
 print (f'array_g:\n{array_g}')
