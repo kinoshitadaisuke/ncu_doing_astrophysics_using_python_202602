@@ -1,25 +1,25 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/03/04 16:20:28 (UT+08:00) daisuke>
+# Time-stamp: <2026/03/04 16:20:07 (UT+08:00) daisuke>
 #
 
 # importing numpy module
 import numpy
 
 # making a Numpy array (ndarray) with a specified data type
-# numpy.dtype ( ('unicode', 10) ) : 10-character Unicode string
-array_j = numpy.array (['Ceres', 'Pallas', 'Juno', 'Vesta', 'Astraea', \
-                        'Hebe', 'Iris', 'Flora', 'Metis', 'Hygiea'], \
-                       dtype=numpy.dtype ( ('unicode', 10) ) )
+# numpy.complex64 : 64-bit complex number
+array_i = numpy.array ([1.0 + 2.0j, 3.0j, 4.0, 5.0 - 6.0j, -7.0 + 8.0j, \
+                        -9.0 - 10.0j, -11.0j, -12.0, 13.0 + 14.0j, 15.0j], \
+                       dtype=numpy.complex64)
 
 # printing Numpy array
-print (f'array_j:\n{array_j}')
+print (f'array_i:\n{array_i}')
 
 # printing information
 print (f'information:')
-print (f'  ndim     = {array_j.ndim}')
-print (f'  size     = {array_j.size}')
-print (f'  shape    = {array_j.shape}')
-print (f'  dtype    = {array_j.dtype}')
-print (f'  itemsize = {array_j.itemsize} byte')
+print (f'  ndim     = {array_i.ndim}')
+print (f'  size     = {array_i.size}')
+print (f'  shape    = {array_i.shape}')
+print (f'  dtype    = {array_i.dtype}')
+print (f'  itemsize = {array_i.itemsize} byte')
