@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/03/10 20:19:46 (UT+08:00) daisuke>
+# Time-stamp: <2026/03/12 11:23:57 (UT+08:00) daisuke>
 #
 
 # input data file
@@ -17,4 +17,4 @@ with open (file_input, 'r') as fh_in:
         mag       = float (mag_str)
         mag_error = float (error_str)
         # printing data
-        print (f'{date} {mag:f} {mag_error:f} {band} {telescope}')
+        print (f'{date} {mag:6.3f} {mag_error:6.3f} {band} {telescope}')
