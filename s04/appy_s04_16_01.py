@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/03/13 15:30:57 (UT+08:00) daisuke>
+# Time-stamp: <2026/03/14 13:35:06 (UT+08:00) daisuke>
 #
 
 # importing PIL module
@@ -18,7 +18,7 @@ import matplotlib.figure
 file_jpeg = 'campus_map.jpg'
 
 # output file
-file_output = 'campus_map0.png'
+file_output = 'appy_s04_16_01.png'
 
 # resolution of output file in DPI
 resolution_dpi = 225.0
