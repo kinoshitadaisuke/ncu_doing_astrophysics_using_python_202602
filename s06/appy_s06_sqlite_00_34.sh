@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #
-# Time-stamp: <2025/10/03 13:34:34 (UT+08:00) daisuke>
+# Time-stamp: <2026/03/19 10:34:59 (UT+08:00) daisuke>
 #
 
 # exporting database
