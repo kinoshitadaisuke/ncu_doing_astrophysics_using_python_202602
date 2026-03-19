@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #
-# Time-stamp: <2025/10/03 13:37:25 (UT+08:00) daisuke>
+# Time-stamp: <2026/03/19 10:37:01 (UT+08:00) daisuke>
 #
 
 # printing structure of table
