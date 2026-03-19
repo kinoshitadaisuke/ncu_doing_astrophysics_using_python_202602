@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #
-# Time-stamp: <2025/10/03 13:34:20 (UT+08:00) daisuke>
+# Time-stamp: <2026/03/19 10:34:45 (UT+08:00) daisuke>
 #
 
 # SQL query
