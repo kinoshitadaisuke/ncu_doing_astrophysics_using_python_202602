@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #
-# Time-stamp: <2025/10/03 13:36:57 (UT+08:00) daisuke>
+# Time-stamp: <2026/03/19 10:36:36 (UT+08:00) daisuke>
 #
 
 # printing tables in the database file "hip.db"
