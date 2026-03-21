@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/03/19 10:38:42 (UT+08:00) daisuke>
+# Time-stamp: <2026/03/21 15:18:07 (UT+08:00) daisuke>
 #
 
 # importing gzip module
@@ -109,8 +109,8 @@ with open (file_sql, 'w') as fh_sql:
                 parallax = -999.9
 
             # SQL command to add data to table
-            sql_add = f'insert into bsc values ({HR}, "{name}", ' \
-                + f'"{RA_str}", {RA_deg}, "{Dec_str}", {Dec_deg}, ' \
-                + f'{glon}, {glat}, {mag_V}, {colour_BV}, ' \
-                + f'"{sptype}", {pm_RA}, {pm_Dec}, {parallax});\n'
+            sql_add = f"insert into bsc values ({HR}, '{name}', " \
+                + f"'{RA_str}', {RA_deg}, '{Dec_str}', {Dec_deg}, " \
+                + f"{glon}, {glat}, {mag_V}, {colour_BV}, " \
+                + f"'{sptype}', {pm_RA}, {pm_Dec}, {parallax});\n"
             fh_sql.write (sql_add)
