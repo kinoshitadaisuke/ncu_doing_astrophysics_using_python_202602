@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/03/19 10:38:16 (UT+08:00) daisuke>
+# Time-stamp: <2026/03/21 15:14:18 (UT+08:00) daisuke>
 #
 
 # importing urllib module
@@ -14,7 +14,7 @@ import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
 # URL of data file
-url_data = 'http://cdsarc.u-strasbg.fr/ftp/V/50/ReadMe'
+url_data = 'https://cdsarc.u-strasbg.fr/ftp/V/50/ReadMe'
 
 # output file name
 file_output = 'bsc5.readme'
