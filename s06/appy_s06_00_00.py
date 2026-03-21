@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/03/19 10:37:47 (UT+08:00) daisuke>
+# Time-stamp: <2026/03/21 14:54:02 (UT+08:00) daisuke>
 #
 
 # importing urllib module
@@ -14,7 +14,7 @@ import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
 # URL of data file
-url_data = 'https://s3b.astro.ncu.edu.tw/appy_202509/data/dp.csv'
+url_data = 'https://s3b.astro.ncu.edu.tw/appy_202602/data/dp.csv'
 
 # output file name
 file_output = 'dwarf_planet.csv'
