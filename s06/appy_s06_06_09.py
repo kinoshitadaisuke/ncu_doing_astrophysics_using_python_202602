@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/03/20 14:02:44 (UT+08:00) daisuke>
+# Time-stamp: <2026/03/21 16:43:28 (UT+08:00) daisuke>
 #
 
 # importing duckdb module
@@ -16,6 +16,6 @@ sql_query = "SELECT name,mag_v,colour_ub,colour_bv,colour_vr,colour_ri FROM land
 # connecting to a new database
 with duckdb.connect (file_db) as connection:
     # executing a query
-    query_result = connection.sql (sql_query).show ()
+    query_result = connection.sql (sql_query).df ()
     # printing result of query
     print (query_result)
