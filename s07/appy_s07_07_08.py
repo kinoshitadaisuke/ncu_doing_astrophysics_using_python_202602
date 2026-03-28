@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/03/22 13:01:08 (UT+08:00) daisuke>
+# Time-stamp: <2026/03/28 20:52:36 (UT+08:00) daisuke>
 #
 
 # importing numpy module
@@ -18,7 +18,7 @@ import matplotlib.figure
 file_input = 'synthetic_02.data'
 
 # output file name
-file_output = 'appy_s07_07_08.pdf'
+file_output = 'appy_s07_07_08.png'
 
 # making empty lists for storing data
 list_x    = []
