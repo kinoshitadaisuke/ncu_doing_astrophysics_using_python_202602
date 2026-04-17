@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/04/13 08:29:49 (UT+08:00) daisuke>
+# Time-stamp: <2026/04/16 23:43:47 (UT+08:00) daisuke>
 #
 
 # importing astropy module
@@ -11,7 +11,7 @@ import astropy.time
 import astroquery.jplhorizons
 
 # date/time
-date = astropy.time.Time ('2026-01-01 00:00:00')
+date = astropy.time.Time ('2026-07-01 00:00:00')
 
 # number of asteroids to get position
 n_asteroids = 10
