@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/04/13 08:31:51 (UT+08:00) daisuke>
+# Time-stamp: <2026/04/15 17:30:50 (UT+08:00) daisuke>
 #
 
 # importing numpy module
@@ -48,6 +48,9 @@ with open (file_output, 'w') as fh:
     
     # processing for each asteroid
     for i in range (1, n_asteroids + 1):
+        # skipping the asteroid 94193 because it causes an error
+        if (i == 94193):
+            continue
         # set-up a query for JPL Horizons
         query = astroquery.jplhorizons.Horizons (id=f"{i}", \
                                                  id_type='smallbody', \
