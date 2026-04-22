@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/04/20 08:39:55 (UT+08:00) daisuke>
+# Time-stamp: <2026/04/21 13:19:23 (UT+08:00) daisuke>
 #
 
 # importing urllib module
@@ -14,7 +14,7 @@ import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
 # URL of data file
-url_data = 'https://relay.sao.ru/lv/lvgdb/tables/lvg_table6.dat'
+url_data = 'https://www.sao.ru/lv/lvgdb/tables/lvg_table6.dat'
 
 # output file name
 file_output = 'lvg_d.data'
