@@ -1,7 +1,7 @@
-#!/usr/pkg/bin/python3.13
+#!/usr/bin/env python3
 
 #
-# Time-stamp: <2025/11/07 10:06:29 (UT+08:00) daisuke>
+# Time-stamp: <2026/04/23 08:46:23 (UT+08:00) daisuke>
 #
 
 # importing argparse module
