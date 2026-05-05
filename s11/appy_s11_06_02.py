@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/04/23 08:47:21 (UT+08:00) daisuke>
+# Time-stamp: <2026/05/05 11:21:17 (UT+08:00) daisuke>
 #
 
 # importing argparse module
@@ -15,7 +15,7 @@ import matplotlib.figure
 import matplotlib.backends.backend_agg
 
 # construction of parser object for argparse
-descr  = 'making HR diagram and superimposing location of main-sequence'
+descr  = 'making colour-magnitude diagram and superimposing location of main-sequence'
 parser = argparse.ArgumentParser (description=descr)
 
 # adding arguments
