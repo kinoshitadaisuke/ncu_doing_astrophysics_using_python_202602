@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/05/05 12:48:48 (UT+08:00) daisuke>
+# Time-stamp: <2026/05/05 20:16:50 (UT+08:00) daisuke>
 #    
 
 # importing argparse module
@@ -189,7 +189,7 @@ for i in range ( len (data_parallax) ):
 # opening file for writing
 with open (file_output, 'w') as fh:
     # writing header
-    header = f'# star ID, RA, Dec, parallax, pmra, pmdec, radial velocity' \
+    header = f'# star ID, RA, Dec, parallax, pmra, pmdec, radial velocity,' \
         + f' b mag, g mag, r mag, b-r, b-g, g-r\n'
     fh.write (header)
     # examining each star
