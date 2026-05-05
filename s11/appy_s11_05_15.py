@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/04/23 08:46:41 (UT+08:00) daisuke>
+# Time-stamp: <2026/05/05 20:16:34 (UT+08:00) daisuke>
 #
 
 # importing argparse module
@@ -151,7 +151,7 @@ print (f'  mean pmdec = {mean_pmdec:+6.2f} [mas/yr]')
 # opening file for writing
 with open (file_output, 'w') as fh:
     # writing header
-    header = f'# star ID, RA, Dec, parallax, pmra, pmdec, radial velocity' \
+    header = f'# star ID, RA, Dec, parallax, pmra, pmdec, radial velocity,' \
         + f' b mag, g mag, r mag, b-r, b-g, g-r\n'
     fh.write (header)
     # candidate selection
