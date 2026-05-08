@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/05/07 17:15:28 (UT+08:00) daisuke>
+# Time-stamp: <2026/05/08 08:23:17 (UT+08:00) daisuke>
 #
 
 # importing numpy module
@@ -50,12 +50,12 @@ start_calib = (24 - 8) / 24.0 # 16:00 UT
 end_calib   = (25 - 8) / 24.0 # 17:00 UT
 
 # start of observation
-date_start = '2026-01-01T12:00:00'
+date_start = '2026-07-01T12:00:00'
 t_start    = astropy.time.Time (date_start, scale='utc', format='isot')
 mjd_start  = t_start.mjd
 
 # end of observation
-date_end = '2026-01-04T20:00:00'
+date_end = '2026-07-04T20:00:00'
 t_end    = astropy.time.Time (date_end, scale='utc', format='isot')
 mjd_end  = t_end.mjd
 
