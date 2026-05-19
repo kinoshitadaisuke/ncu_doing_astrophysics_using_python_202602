@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/05/13 08:35:58 (UT+08:00) daisuke>
+# Time-stamp: <2026/05/18 12:05:30 (UT+08:00) daisuke>
 #
 
 # importing argparse module
@@ -112,8 +112,8 @@ table_source = astropy.table.Table.read (file_catalogue, \
                                          format='ascii.commented_header')
 
 # positions of detected sources
-list_x = list (table_source['xcentroid'])
-list_y = list (table_source['ycentroid'])
+list_x = list (table_source['x_centroid'])
+list_y = list (table_source['y_centroid'])
 
 # opening FITS file
 with astropy.io.fits.open (file_input) as hdu:
