@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/05/13 08:37:17 (UT+08:00) daisuke>
+# Time-stamp: <2026/05/18 13:45:30 (UT+08:00) daisuke>
 #
 
 # importing argparse module
@@ -13,117 +13,163 @@ import sys
 # importing pathlib module
 import pathlib
 
+# importing astroquery module
+import astroquery.simbad
+import astroquery.ipac.ned
+import astroquery.skyview
+
+# importing astropy module
+import astropy.coordinates
+import astropy.units
+
 # importing datetime module
 import datetime
 
-# importing numpy module
-import numpy
+# importing ssl module
+import ssl
 
-# importing astropy module
-import astropy.table
-
-# importing astroalign module
-import astroalign
+# allow insecure downloading
+ssl._create_default_https_context = ssl._create_unverified_context
 
 # date/time
-now = datetime.datetime.now ()
+now = datetime.datetime.now ().isoformat ()
+
+# units
+u_ha  = astropy.units.hourangle
+u_deg = astropy.units.deg
 
 # constructing parser object
-descr  = 'finding star-to-star correspondence'
+descr  = "downloading DSS/SDSS image"
 parser = argparse.ArgumentParser (description=descr)
 
 # adding arguments
-parser.add_argument ('-n', '--number', type=int, default=50, \
-                     help='maximum number of control sources (default: 50)')
-parser.add_argument ('catalogue1', nargs=1, help='catalogue file 1')
-parser.add_argument ('catalogue2', nargs=1, help='catalogue file 2')
+list_resolver = ['simbad', 'ned']
+list_survey   = ['DSS1 Blue', 'DSS1 Red', 'DSS2 Blue', 'DSS2 Red', 'DSS2 IR', \
+                 'SDSSu', 'SDSSg', 'SDSSr', 'SDSSi', 'SDSSz', \
+                 'SDSSdr7u', 'SDSSdr7g', 'SDSSdr7r', 'SDSSdr7i', 'SDSSdr7z', \
+                 'Mellinger Blue', 'Mellinger Green', 'Mellinger Red', \
+                 'NEAT']
+parser.add_argument ('-r', '--resolver', choices=list_resolver, \
+                     default='simbad', help='choice of name resolver')
+parser.add_argument ('-s', '--survey', choices=list_survey, \
+                     default='SDSSr', help='choice of survey')
+parser.add_argument ('-t', '--target', default='', help='target name')
+parser.add_argument ('-f', '--fov', type=int, default=1024, \
+                     help='field-of-view in pixel')
+parser.add_argument ('-o', '--output', default='', help='output file name')
+parser.add_argument ('-x', '--offset-ra', type=float, default=0.0, \
+                     help='offset in RA direction in arcmin (default: 0)')
+parser.add_argument ('-y', '--offset-dec', type=float, default=0.0, \
+                     help='offset in Dec direction in arcmin (default: 0)')
 
 # command-line argument analysis
 args = parser.parse_args ()
 
-# file names
-file_cat1       = args.catalogue1[0]
-file_cat2       = args.catalogue2[0]
-n_controlpoints = args.number
+# input parameters
+name_resolver     = args.resolver
+survey            = args.survey
+target_name       = args.target
+fov_pix           = args.fov
+file_output       = args.output
+offset_ra_arcmin  = args.offset_ra
+offset_dec_arcmin = args.offset_ra
 
-# making pathlib objects
-path_cat1 = pathlib.Path (file_cat1)
-path_cat2 = pathlib.Path (file_cat2)
-
-# check of catalogue file name
-if not ( (path_cat1.suffix == '.cat') and (path_cat2.suffix == '.cat') ):
-    # printing message
-    print (f'ERROR: Input file must be a catalogue file (*.cat).')
-    print (f'ERROR: catalogue file 1 = "{file_cat1}"')
-    print (f'ERROR: catalogue file 2 = "{file_cat2}"')
-    # exit
-    sys.exit ()
-
-# existence check of cat1 file
-if not (path_cat1.exists ()):
-    # printing message
+# checking target name
+if (target_name == ''):
+    # printing error message
     print (f'ERROR:')
-    print (f'ERROR: catalogue file 1 "{file_cat1}" does not exist.')
+    print (f'ERROR: No target name is given!')
     print (f'ERROR:')
     # exit
     sys.exit ()
 
-# existence check of cat2 file
-if not (path_cat2.exists ()):
-    # printing message
+# making pathlib object
+path_output = pathlib.Path (file_output)
+    
+# checking output file name
+if (file_output == ''):
+    # printing error message
     print (f'ERROR:')
-    print (f'ERROR: catalogue file 2 "{file_cat2}" does not exist.')
+    print (f'ERROR: No output file name is given!')
     print (f'ERROR:')
     # exit
     sys.exit ()
+elif not (path_output.suffix == '.fits'):
+    # printing error message
+    print (f'ERROR:')
+    print (f'ERROR: Output file must be FITS file!')
+    print (f'ERROR:')
+    # exit
+    sys.exit ()
+if (path_output.exists ()):
+    # printing error message
+    print (f'ERROR:')
+    print (f'ERROR: Output file "{file_output}" exists!')
+    print (f'ERROR:')
+    # exit
+    sys.exit ()
+    
+# using name resolver
+if (name_resolver == 'simbad'):
+    query_result = astroquery.simbad.Simbad.query_object (target_name)
+elif (name_resolver == 'ned'):
+    query_result = astroquery.ipac.ned.Ned.query_object (target_name)
 
-# reading catalogue from a file
-table_source1 = astropy.table.Table.read (file_cat1, \
-                                          format='ascii.commented_header')
-table_source2 = astropy.table.Table.read (file_cat2, \
-                                          format='ascii.commented_header')
+# RA and Dec
+RA  = query_result['ra']
+Dec = query_result['dec']
 
-# (x, y) coordinates of sources
-list_source1_x = list (table_source1['xcentroid'])
-list_source1_y = list (table_source1['ycentroid'])
-list_source2_x = list (table_source2['xcentroid'])
-list_source2_y = list (table_source2['ycentroid'])
-position_1     = numpy.transpose ( (list_source1_x, list_source1_y) )
-position_2     = numpy.transpose ( (list_source2_x, list_source2_y) )
+# coordinate
+if (name_resolver == 'simbad'):
+    coord = astropy.coordinates.SkyCoord (RA[0], Dec[0], unit=(u_deg, u_deg))
+elif (name_resolver == 'ned'):
+    coord = astropy.coordinates.SkyCoord (RA[0], Dec[0], unit=(u_deg, u_deg))
 
-# finding star-to-star matching
-transf, (list_matched_2, list_matched_1) \
-    = astroalign.find_transform (position_2, position_1, \
-                                 max_control_points=n_controlpoints)
+coord_str = coord.to_string (style='hmsdms')
+(coord_ra_str, coord_dec_str) = coord_str.split ()
+coord_ra_deg  = coord.ra.deg
+coord_dec_deg = coord.dec.deg
+    
+# printing coordinate
+print (f'Target Name: "{target_name}"')
+print (f'  RA:  {coord_ra_str} = {coord_ra_deg} deg')
+print (f'  Dec: {coord_dec_str} = {coord_dec_deg} deg')
 
-# transformation
-list_matched_2_aligned \
-    = astroalign.matrix_transform (list_matched_2, transf.params)
+# giving offsets
+coord2_ra_deg  = coord_ra_deg + offset_ra_arcmin / 60.0
+coord2_dec_deg = coord_dec_deg + offset_dec_arcmin / 60.0
 
-# printing results
-print (f'#')
-print (f'# result of image alignment')
-print (f'#')
-print (f'#   date/time = {now}')
-print (f'#')
-print (f'# input files')
-print (f'#')
-print (f'#   catalogue file 1 = {file_cat1}')
-print (f'#   catalogue file 2 = {file_cat2}')
-print (f'#')
-print (f'# transformation matrix')
-print (f'#')
-print (f'# [')
-print (f'#  [{transf.params[0][0]:11.6f}, {transf.params[0][1]:11.6f}, {transf.params[0][2]:11.6f}],')
-print (f'#  [{transf.params[1][0]:11.6f}, {transf.params[1][1]:11.6f}, {transf.params[1][2]:11.6f}],')
-print (f'#  [{transf.params[2][0]:11.6f}, {transf.params[2][1]:11.6f}, {transf.params[2][2]:11.6f}]')
-print (f'# ]')
-print (f'#')
-print (f'#')
-print (f'# list of matched stars')
-print (f'#')
-for i in range ( len (list_matched_1) ):
-    print (f'({list_matched_1[i][0]:8.3f}, {list_matched_1[i][1]:8.3f})', \
-           f'on 1st image', \
-           f'==> ({list_matched_2[i][0]:8.3f}, {list_matched_2[i][1]:8.3f})', \
-           f'on 2nd image')
+# SkyCoord object for coordinates after giving offsets
+coord2 = astropy.coordinates.SkyCoord (coord2_ra_deg, coord2_dec_deg, \
+                                       unit=(u_deg, u_deg))
+coord2_str = coord2.to_string (style='hmsdms')
+(coord2_ra_str, coord2_dec_str) = coord_str.split ()
+
+# printing coordinate
+print (f'Coordinates after giving offsets')
+print (f'  RA:  {coord2_ra_str} = {coord2_ra_deg} deg')
+print (f'  Dec: {coord2_dec_str} = {coord2_dec_deg} deg')
+
+# searching image
+list_image = astroquery.skyview.SkyView.get_image_list (position=coord2, \
+                                                        survey=survey)
+
+# printing image list
+print (f'Available images:')
+print (f' {list_image}')
+
+# getting image
+image = astroquery.skyview.SkyView.get_images (position=coord2, survey=survey, \
+                                               pixels=fov_pix)
+
+# header and data
+image0 = image[0]
+header = image0[0].header
+data   = image0[0].data
+
+# adding comments in header
+header['history'] = f'image downloaded from {survey}'
+header['history'] = f'image saved on {now}'
+
+# saving to a FITS file
+astropy.io.fits.writeto (file_output, data, header=header)
