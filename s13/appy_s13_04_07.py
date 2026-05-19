@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/05/13 08:36:59 (UT+08:00) daisuke>
+# Time-stamp: <2026/05/18 12:33:37 (UT+08:00) daisuke>
 #
 
 # importing argparse module
@@ -152,10 +152,10 @@ table_source2 = astropy.table.Table.read (file_cat2, \
                                           format='ascii.commented_header')
 
 # (x, y) coordinates of sources
-list_source1_x = list (table_source1['xcentroid'])
-list_source1_y = list (table_source1['ycentroid'])
-list_source2_x = list (table_source2['xcentroid'])
-list_source2_y = list (table_source2['ycentroid'])
+list_source1_x = list (table_source1['x_centroid'])
+list_source1_y = list (table_source1['y_centroid'])
+list_source2_x = list (table_source2['x_centroid'])
+list_source2_y = list (table_source2['y_centroid'])
 position_1     = numpy.transpose ( (list_source1_x, list_source1_y) )
 position_2     = numpy.transpose ( (list_source2_x, list_source2_y) )
 
