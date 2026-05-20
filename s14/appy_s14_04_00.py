@@ -1,7 +1,7 @@
-#!/usr/pkg/bin/python3
+#!/usr/bin/env python3
 
 #
-# Time-stamp: <2025/12/08 22:56:19 (UT+08:00) daisuke>
+# Time-stamp: <2026/05/20 11:11:40 (UT+08:00) daisuke>
 #
 
 # importing rebound module
