@@ -1,7 +1,7 @@
-#!/usr/pkg/bin/python3
+#!/usr/bin/env python3
 
 #
-# Time-stamp: <2025/12/09 22:02:53 (UT+08:00) daisuke>
+# Time-stamp: <2026/05/20 11:13:21 (UT+08:00) daisuke>
 #
 
 # importing gzip module
