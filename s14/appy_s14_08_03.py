@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/05/20 11:14:16 (UT+08:00) daisuke>
+# Time-stamp: <2026/05/22 08:25:52 (UT+08:00) daisuke>
 #
 
 # importing subprocess module
@@ -13,7 +13,7 @@ ffmpeg = 'ffmpeg'
 # ffmpeg options
 options_ffmpeg = f'-f image2 -start_number 0 -framerate 30' \
     + f' -i iss3d_cropped/iss3d_%06dc.png' \
-    + f' -an -vcodec libx264 -pix_fmt yuv420p -threads 4'
+    + f' -an -vcodec libx264 -pix_fmt yuv420p -threads 16'
 
 # output file name
 file_output = 'iss3d.mp4'
