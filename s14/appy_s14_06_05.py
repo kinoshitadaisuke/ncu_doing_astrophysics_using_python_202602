@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/05/20 11:13:12 (UT+08:00) daisuke>
+# Time-stamp: <2026/05/21 23:08:44 (UT+08:00) daisuke>
 #
 
 # importing subprocess module
@@ -13,7 +13,7 @@ ffmpeg = 'ffmpeg'
 # ffmpeg options
 options_ffmpeg = f'-f image2 -start_number 0 -framerate 30' \
     + f' -i trojan/trojan_%04d.png' \
-    + f' -an -vcodec libx264 -pix_fmt yuv420p -threads 4'
+    + f' -an -vcodec libx264 -pix_fmt yuv420p -threads 16'
 
 # output file name
 file_output = 'trojan.mp4'
