@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/05/20 11:10:39 (UT+08:00) daisuke>
+# Time-stamp: <2026/05/21 16:59:13 (UT+08:00) daisuke>
 #
 
 # importing astropy module
@@ -18,7 +18,7 @@ import matplotlib.backends.backend_agg
 file_fig = 'appy_s14_02_05.png'
 
 # date/time
-t_str = '2026-01-01T12:00:00'
+t_str = '2026-07-01T12:00:00'
 t     = astropy.time.Time (t_str, scale='utc', format='isot')
 
 # target list
