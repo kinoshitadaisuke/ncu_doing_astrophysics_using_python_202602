@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/05/20 11:12:09 (UT+08:00) daisuke>
+# Time-stamp: <2026/05/26 21:47:45 (UT+08:00) daisuke>
 #
 
 # importing datetime module
@@ -63,11 +63,11 @@ sim = rebound.Simulation ()
 
 # adding major bodies
 for name in majorbody.keys ():
-    sim.add (majorbody[name], date=t_epoch, hash=name)
+    sim.add (majorbody[name], date=t_epoch)
 
 # adding minor bodies
 for name in minorbody.keys ():
-    sim.add (minorbody[name], date=t_epoch, hash=name)
+    sim.add (minorbody[name], date=t_epoch)
 
 # setting for active particles
 #  sim.N_active = 10 ==> only first 10 objects affect their gravity
