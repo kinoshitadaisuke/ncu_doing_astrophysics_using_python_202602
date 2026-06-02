@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/05/28 12:19:12 (UT+08:00) daisuke>
+# Time-stamp: <2026/06/02 11:07:30 (UT+08:00) daisuke>
 #
 
 # importing numpy module
