@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 #
-# Time-stamp: <2026/05/28 12:17:55 (UT+08:00) daisuke>
+# Time-stamp: <2026/06/02 10:55:44 (UT+08:00) daisuke>
 #
 
 # importing urllib module
@@ -22,8 +22,12 @@ file_output = 'neowise_albedo.zip'
 # printing status
 print (f'Now, fetching {url_data}...')
 
+# making a request object
+req = urllib.request.Request (url_data)
+req.add_header ('User-Agent', 'Mozilla/5.0')
+
 # opening URL
-with urllib.request.urlopen (url_data) as fh_read:
+with urllib.request.urlopen (req) as fh_read:
     # reading data
     data_byte = fh_read.read ()
 
